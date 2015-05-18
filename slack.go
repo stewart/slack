@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/websocket"
+	"github.com/stewart/slack/events"
 )
 
 type Error struct {
@@ -69,7 +70,7 @@ func (client *Client) Loop() {
 				return
 			}
 
-			message, err := eventParser(msg)
+			message, err := events.Parse(msg)
 			if err != nil {
 				client.Errors <- err
 				return

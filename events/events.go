@@ -1,4 +1,6 @@
-package slack
+package events
+
+import "github.com/stewart/slack/types"
 
 // Structs that map to the responses laid out by Slack's RTM docs
 // https://api.slack.com/rtm
@@ -66,7 +68,7 @@ type ChannelCreatedEvent struct {
 // https://api.slack.com/events/channel_joined
 type ChannelJoinedEvent struct {
 	Event
-	Channel Channel `json:"channel"`
+	Channel types.Channel `json:"channel"`
 }
 
 // Channel Left Event
@@ -123,8 +125,8 @@ type ChannelHistoryChangedEvent struct {
 // https://api.slack.com/events/im_created
 type IMCreatedEvent struct {
 	Event
-	User    string  `json:"user"`
-	Channel Channel `json:"channel"`
+	User    string        `json:"user"`
+	Channel types.Channel `json:"channel"`
 }
 
 // IM Open Event
@@ -164,14 +166,14 @@ type IMHistoryChangedEvent struct {
 // https://api.slack.com/events/group_joined
 type GroupJoinedEvent struct {
 	Event
-	Channel Channel `json:"channel"`
+	Channel types.Channel `json:"channel"`
 }
 
 // Group Left Event
 // https://api.slack.com/events/group_left
 type GroupLeftEvent struct {
 	Event
-	Channel Channel `json:"channel"`
+	Channel types.Channel `json:"channel"`
 }
 
 // Group Open Event
@@ -236,28 +238,28 @@ type GroupHistoryChangedEvent struct {
 // https://api.slack.com/events/file_created
 type FileCreatedEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Shared Event
 // https://api.slack.com/events/file_shared
 type FileSharedEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Unshared Event
 // https://api.slack.com/events/file_unshared
 type FileUnsharedEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Public Event
 // https://api.slack.com/events/file_public
 type FilePublicEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Private Event
@@ -271,7 +273,7 @@ type FilePrivateEvent struct {
 // https://api.slack.com/events/file_change
 type FileChangeEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Deleted Event
@@ -286,22 +288,22 @@ type FileDeletedEvent struct {
 // https://api.slack.com/events/file_comment_added
 type FileCommentAddedEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Comment Edited Event
 // https://api.slack.com/events/file_comment_edited
 type FileCommentEditedEvent struct {
 	Event
-	File File `json:"file"`
+	File types.File `json:"file"`
 }
 
 // File Comment Deleted Event
 // https://api.slack.com/events/file_comment_deleted
 type FileCommentDeletedEvent struct {
 	Event
-	File    File   `json:"file"`
-	Comment string `json:"comment"`
+	File    types.File `json:"file"`
+	Comment string     `json:"comment"`
 }
 
 // Pin Added Event
@@ -339,14 +341,14 @@ type PrefChangeEvent struct {
 // https://api.slack.com/events/user_change
 type UserChangeEvent struct {
 	Event
-	User User `json:"user"`
+	User types.User `json:"user"`
 }
 
 // Team Join Event
 // https://api.slack.com/events/team_join
 type TeamJoinEvent struct {
 	Event
-	User User `json:"user"`
+	User types.User `json:"user"`
 }
 
 // Star Added Event

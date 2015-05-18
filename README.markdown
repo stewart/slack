@@ -26,6 +26,7 @@ import (
 	"os"
 
 	"github.com/stewart/slack"
+	"github.com/stewart/slack/events"
 )
 
 var SLACK_TOKEN = os.Getenv("SLACK_TOKEN")
@@ -51,13 +52,13 @@ func main() {
 
 func parse(client *slack.Client, msg interface{}) {
 	switch msg := msg.(type) {
-	case slack.HelloEvent:
+	case events.HelloEvent:
 		fmt.Println("Slack says hello!")
 
-	case slack.PresenceChangeEvent:
+	case events.PresenceChangeEvent:
 		fmt.Println("There was a presence change!", msg.Presence)
 
-	case slack.MessageEvent:
+	case events.MessageEvent:
 		channel := msg.Channel
 		text := "This is a basic message response"
 		if err := client.SendMessage(channel, text); err != nil {

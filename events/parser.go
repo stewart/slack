@@ -1,8 +1,8 @@
-package slack
+package events
 
 import "encoding/json"
 
-func eventParser(msg []byte) (interface{}, error) {
+func Parse(msg []byte) (interface{}, error) {
 	var event = Event{}
 
 	if err := json.Unmarshal(msg, &event); err != nil {

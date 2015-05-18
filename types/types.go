@@ -1,4 +1,4 @@
-package slack
+package types
 
 // Representations of Slack's API Types
 // https://api.slack.com/types
