@@ -11,11 +11,11 @@ type Event struct {
 
 // Hello Event
 // https://api.slack.com/events/hello
-type HelloEvent struct{ Event }
+type Hello struct{ Event }
 
 // Message Event (subtypes currently not handled)
 // https://api.slack.com/events/message
-type MessageEvent struct {
+type Message struct {
 	Event
 
 	Channel string `json:"channel"`
@@ -38,7 +38,7 @@ type MessageEvent struct {
 
 // User Typing Event
 // https://api.slack.com/events/user_typing
-type UserTypingEvent struct {
+type UserTyping struct {
 	Event
 	Channel string `json:"channel"`
 	User    string `json:"user"`
@@ -46,7 +46,7 @@ type UserTypingEvent struct {
 
 // Channel Marked Event
 // https://api.slack.com/events/channel_marked
-type ChannelMarkedEvent struct {
+type ChannelMarked struct {
 	Event
 	Channel string `json:"channel"`
 	TS      string `json:"ts"`
@@ -54,7 +54,7 @@ type ChannelMarkedEvent struct {
 
 // Channel Created Event
 // https://api.slack.com/events/channel_created
-type ChannelCreatedEvent struct {
+type ChannelCreated struct {
 	Event
 	Channel struct {
 		ID      string `json:"id"`
@@ -66,28 +66,28 @@ type ChannelCreatedEvent struct {
 
 // Channel Joined Event
 // https://api.slack.com/events/channel_joined
-type ChannelJoinedEvent struct {
+type ChannelJoined struct {
 	Event
 	Channel types.Channel `json:"channel"`
 }
 
 // Channel Left Event
 // https://api.slack.com/events/channel_left
-type ChannelLeftEvent struct {
+type ChannelLeft struct {
 	Event
 	Channel string `json:"channel"`
 }
 
 // Channel Deleted Event
 // https://api.slack.com/events/channel_deleted
-type ChannelDeletedEvent struct {
+type ChannelDeleted struct {
 	Event
 	Channel string `json:"channel"`
 }
 
 // Channel Rename Event
 // https://api.slack.com/events/channel_rename
-type ChannelRenameEvent struct {
+type ChannelRename struct {
 	Event
 	Channel struct {
 		ID      string `json:"id"`
@@ -98,7 +98,7 @@ type ChannelRenameEvent struct {
 
 // Channel Archive Event
 // https://api.slack.com/events/channel_archive
-type ChannelArchiveEvent struct {
+type ChannelArchive struct {
 	Event
 	Channel string `json:"channel"`
 	User    string `json:"user"`
@@ -106,7 +106,7 @@ type ChannelArchiveEvent struct {
 
 // Channel Unarchive Event
 // https://api.slack.com/events/channel_unarchive
-type ChannelUnarchiveEvent struct {
+type ChannelUnarchive struct {
 	Event
 	Channel string `json:"channel"`
 	User    string `json:"user"`
@@ -114,7 +114,7 @@ type ChannelUnarchiveEvent struct {
 
 // Channel History Changed Event
 // https://api.slack.com/events/channel_history_changed
-type ChannelHistoryChangedEvent struct {
+type ChannelHistoryChanged struct {
 	Event
 	Latest  string `json:"latest"`
 	TS      string `json:"ts"`
@@ -123,7 +123,7 @@ type ChannelHistoryChangedEvent struct {
 
 // IM Created Event
 // https://api.slack.com/events/im_created
-type IMCreatedEvent struct {
+type IMCreated struct {
 	Event
 	User    string        `json:"user"`
 	Channel types.Channel `json:"channel"`
@@ -131,7 +131,7 @@ type IMCreatedEvent struct {
 
 // IM Open Event
 // https://api.slack.com/events/im_open
-type IMOpenEvent struct {
+type IMOpen struct {
 	Event
 	User    string `json:"user"`
 	Channel string `json:"channel"`
@@ -139,7 +139,7 @@ type IMOpenEvent struct {
 
 // IM Close Event
 // https://api.slack.com/events/im_close
-type IMCloseEvent struct {
+type IMClose struct {
 	Event
 	User    string `json:"user"`
 	Channel string `json:"channel"`
@@ -147,7 +147,7 @@ type IMCloseEvent struct {
 
 // IM Marked Event
 // https://api.slack.com/events/im_marked
-type IMMarkedEvent struct {
+type IMMarked struct {
 	Event
 	Channel string `json:"channel"`
 	TS      string `json:"ts"`
@@ -155,7 +155,7 @@ type IMMarkedEvent struct {
 
 // IM History Changed Event
 // https://api.slack.com/events/im_history_changed
-type IMHistoryChangedEvent struct {
+type IMHistoryChanged struct {
 	Event
 	Latest  string `json:"latest"`
 	TS      string `json:"ts"`
@@ -164,21 +164,21 @@ type IMHistoryChangedEvent struct {
 
 // Group Joined Event
 // https://api.slack.com/events/group_joined
-type GroupJoinedEvent struct {
+type GroupJoined struct {
 	Event
 	Channel types.Channel `json:"channel"`
 }
 
 // Group Left Event
 // https://api.slack.com/events/group_left
-type GroupLeftEvent struct {
+type GroupLeft struct {
 	Event
 	Channel types.Channel `json:"channel"`
 }
 
 // Group Open Event
 // https://api.slack.com/events/group_open
-type GroupOpenEvent struct {
+type GroupOpen struct {
 	Event
 	User    string `json:"user"`
 	Channel string `json:"channel"`
@@ -186,7 +186,7 @@ type GroupOpenEvent struct {
 
 // Group Close Event
 // https://api.slack.com/events/group_close
-type GroupCloseEvent struct {
+type GroupClose struct {
 	Event
 	User    string `json:"user"`
 	Channel string `json:"channel"`
@@ -194,21 +194,21 @@ type GroupCloseEvent struct {
 
 // Group Archive Event
 // https://api.slack.com/events/group_archive
-type GroupArchiveEvent struct {
+type GroupArchive struct {
 	Event
 	Channel string `json:"channel"`
 }
 
 // Group Unarchive Event
 // https://api.slack.com/events/group_unarchive
-type GroupUnarchiveEvent struct {
+type GroupUnarchive struct {
 	Event
 	Channel string `json:"channel"`
 }
 
 // Group Rename Event
 // https://api.slack.com/events/group_rename
-type GroupRenameEvent struct {
+type GroupRename struct {
 	Event
 	Channel struct {
 		ID      string `json:"id"`
@@ -219,7 +219,7 @@ type GroupRenameEvent struct {
 
 // Group Marked Event
 // https://api.slack.com/events/group_marked
-type GroupMarkedEvent struct {
+type GroupMarked struct {
 	Event
 	Channel string `json:"channel"`
 	TS      string `json:"ts"`
@@ -227,7 +227,7 @@ type GroupMarkedEvent struct {
 
 // Group History Changed Event
 // https://api.slack.com/events/group_history_changed
-type GroupHistoryChangedEvent struct {
+type GroupHistoryChanged struct {
 	Event
 	Latest  string `json:"latest"`
 	TS      string `json:"ts"`
@@ -236,49 +236,49 @@ type GroupHistoryChangedEvent struct {
 
 // File Created Event
 // https://api.slack.com/events/file_created
-type FileCreatedEvent struct {
+type FileCreated struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Shared Event
 // https://api.slack.com/events/file_shared
-type FileSharedEvent struct {
+type FileShared struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Unshared Event
 // https://api.slack.com/events/file_unshared
-type FileUnsharedEvent struct {
+type FileUnshared struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Public Event
 // https://api.slack.com/events/file_public
-type FilePublicEvent struct {
+type FilePublic struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Private Event
 // https://api.slack.com/events/file_private
-type FilePrivateEvent struct {
+type FilePrivate struct {
 	Event
 	File string `json:"file"`
 }
 
 // File Change Event
 // https://api.slack.com/events/file_change
-type FileChangeEvent struct {
+type FileChange struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Deleted Event
 // https://api.slack.com/events/file_deleted
-type FileDeletedEvent struct {
+type FileDeleted struct {
 	Event
 	FileID  string `json:"file_id"`
 	EventTS string `json:"event_ts"`
@@ -286,21 +286,21 @@ type FileDeletedEvent struct {
 
 // File Comment Added Event
 // https://api.slack.com/events/file_comment_added
-type FileCommentAddedEvent struct {
+type FileCommentAdded struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Comment Edited Event
 // https://api.slack.com/events/file_comment_edited
-type FileCommentEditedEvent struct {
+type FileCommentEdited struct {
 	Event
 	File types.File `json:"file"`
 }
 
 // File Comment Deleted Event
 // https://api.slack.com/events/file_comment_deleted
-type FileCommentDeletedEvent struct {
+type FileCommentDeleted struct {
 	Event
 	File    types.File `json:"file"`
 	Comment string     `json:"comment"`
@@ -308,15 +308,15 @@ type FileCommentDeletedEvent struct {
 
 // Pin Added Event
 // https://api.slack.com/events/pin_added
-type PinAddedEvent struct{ Event }
+type PinAdded struct{ Event }
 
 // Pin Removed Event
 // https://api.slack.com/events/pin_removed
-type PinRemovedEvent struct{ Event }
+type PinRemoved struct{ Event }
 
 // Presence Change Event
 // https://api.slack.com/events/presence_change
-type PresenceChangeEvent struct {
+type PresenceChange struct {
 	Event
 	User     string `json:"user"`
 	Presence string `json:"presence"`
@@ -324,14 +324,14 @@ type PresenceChangeEvent struct {
 
 // Manual Presence Change Event
 // https://api.slack.com/events/manual_presence_change
-type ManualPresenceChangeEvent struct {
+type ManualPresenceChange struct {
 	Event
 	Presence string `json:"presence"`
 }
 
 // Preference Change Event
 // https://api.slack.com/events/pref_change
-type PrefChangeEvent struct {
+type PrefChange struct {
 	Event
 	Name  string      `json:"name"`
 	Value interface{} `json:"value"`
@@ -339,21 +339,21 @@ type PrefChangeEvent struct {
 
 // User Change Event
 // https://api.slack.com/events/user_change
-type UserChangeEvent struct {
+type UserChange struct {
 	Event
 	User types.User `json:"user"`
 }
 
 // Team Join Event
 // https://api.slack.com/events/team_join
-type TeamJoinEvent struct {
+type TeamJoin struct {
 	Event
 	User types.User `json:"user"`
 }
 
 // Star Added Event
 // https://api.slack.com/events/star_added
-type StarAddedEvent struct {
+type StarAdded struct {
 	Event
 	User    string                 `json:"user"`
 	Item    map[string]interface{} `json:"item"` // TODO: implement this
@@ -362,7 +362,7 @@ type StarAddedEvent struct {
 
 // Star Removed Event
 // https://api.slack.com/events/star_removed
-type StarRemovedEvent struct {
+type StarRemoved struct {
 	Event
 	User    string                 `json:"user"`
 	Item    map[string]interface{} `json:"item"` // TODO: implement this
@@ -371,28 +371,28 @@ type StarRemovedEvent struct {
 
 // Emoji Changed Event
 // https://api.slack.com/events/emoji_changed
-type EmojiChangedEvent struct {
+type EmojiChanged struct {
 	Event
 	EventTS string `json:"event_ts"`
 }
 
 // Commands Changed Event
 // https://api.slack.com/events/commands_changed
-type CommandsChangedEvent struct {
+type CommandsChanged struct {
 	Event
 	EventTS string `json:"event_ts"`
 }
 
 // Team Plan Change Event
 // https://api.slack.com/events/team_plan_change
-type TeamPlanChangeEvent struct {
+type TeamPlanChange struct {
 	Event
 	Plan string `json:"plan"`
 }
 
 // Team Pref Change Event
 // https://api.slack.com/events/team_pref_change
-type TeamPrefChangeEvent struct {
+type TeamPrefChange struct {
 	Event
 	Name  string      `json:"name"`
 	Value interface{} `json:"value"`
@@ -400,14 +400,14 @@ type TeamPrefChangeEvent struct {
 
 // Team Rename Event
 // https://api.slack.com/events/team_rename
-type TeamRenameEvent struct {
+type TeamRename struct {
 	Event
 	Name string `json:"name"`
 }
 
 // Team Domain Change Event
 // https://api.slack.com/events/team_domain_change
-type TeamDomainChangeEvent struct {
+type TeamDomainChange struct {
 	Event
 	URL    string `json:"url"`
 	Domain string `json:"domain"`
@@ -415,7 +415,7 @@ type TeamDomainChangeEvent struct {
 
 // Email Domain Changed Event
 // https://api.slack.com/events/email_domain_changed
-type EmailDomainChangedEvent struct {
+type EmailDomainChanged struct {
 	Event
 	EmailDomain string `json:"email_domain"`
 	EventTS     string `json:"event_ts"`
@@ -423,7 +423,7 @@ type EmailDomainChangedEvent struct {
 
 // Bot Added Event
 // https://api.slack.com/events/bot_added
-type BotAddedEvent struct {
+type BotAdded struct {
 	Event
 	Bot struct {
 		ID    string `json:"id"`
@@ -436,7 +436,7 @@ type BotAddedEvent struct {
 
 // Bot Changed Event
 // https://api.slack.com/events/bot_changed
-type BotChangedEvent struct {
+type BotChanged struct {
 	Event
 	Bot struct {
 		ID    string `json:"id"`
@@ -449,8 +449,8 @@ type BotChangedEvent struct {
 
 // Accounts Changed Event
 // https://api.slack.com/events/accounts_changed
-type AccountsChangedEvent struct{ Event }
+type AccountsChanged struct{ Event }
 
 // Team Migration Started Event
 // https://api.slack.com/events/team_migration_started
-type TeamMigrationStartedEvent struct{ Event }
+type TeamMigrationStarted struct{ Event }

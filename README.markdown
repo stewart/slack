@@ -52,13 +52,13 @@ func main() {
 
 func parse(client *slack.Client, msg interface{}) {
 	switch msg := msg.(type) {
-	case events.HelloEvent:
+	case events.Hello:
 		fmt.Println("Slack says hello!")
 
-	case events.PresenceChangeEvent:
+	case events.PresenceChange:
 		fmt.Println("There was a presence change!", msg.Presence)
 
-	case events.MessageEvent:
+	case events.Message:
 		channel := msg.Channel
 		text := "This is a basic message response"
 		if err := client.SendMessage(channel, text); err != nil {

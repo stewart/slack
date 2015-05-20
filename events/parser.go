@@ -11,337 +11,337 @@ func Parse(msg []byte) (interface{}, error) {
 
 	switch event.Type {
 	case "accounts_changed":
-		var event = AccountsChangedEvent{}
+		var event = AccountsChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "bot_added":
-		var event = BotAddedEvent{}
+		var event = BotAdded{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "bot_changed":
-		var event = BotChangedEvent{}
+		var event = BotChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_archive":
-		var event = ChannelArchiveEvent{}
+		var event = ChannelArchive{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_created":
-		var event = ChannelCreatedEvent{}
+		var event = ChannelCreated{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_deleted":
-		var event = ChannelDeletedEvent{}
+		var event = ChannelDeleted{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_history_changed":
-		var event = ChannelHistoryChangedEvent{}
+		var event = ChannelHistoryChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_joined":
-		var event = ChannelJoinedEvent{}
+		var event = ChannelJoined{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_left":
-		var event = ChannelLeftEvent{}
+		var event = ChannelLeft{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_marked":
-		var event = ChannelMarkedEvent{}
+		var event = ChannelMarked{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_rename":
-		var event = ChannelRenameEvent{}
+		var event = ChannelRename{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "channel_unarchive":
-		var event = ChannelUnarchiveEvent{}
+		var event = ChannelUnarchive{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "commands_changed":
-		var event = CommandsChangedEvent{}
+		var event = CommandsChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "email_domain_changed":
-		var event = EmailDomainChangedEvent{}
+		var event = EmailDomainChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "emoji_changed":
-		var event = EmojiChangedEvent{}
+		var event = EmojiChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_change":
-		var event = FileChangeEvent{}
+		var event = FileChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_comment_added":
-		var event = FileCommentAddedEvent{}
+		var event = FileCommentAdded{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_comment_deleted":
-		var event = FileCommentDeletedEvent{}
+		var event = FileCommentDeleted{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_comment_edited":
-		var event = FileCommentEditedEvent{}
+		var event = FileCommentEdited{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_created":
-		var event = FileCreatedEvent{}
+		var event = FileCreated{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_deleted":
-		var event = FileDeletedEvent{}
+		var event = FileDeleted{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_private":
-		var event = FilePrivateEvent{}
+		var event = FilePrivate{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_public":
-		var event = FilePublicEvent{}
+		var event = FilePublic{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_shared":
-		var event = FileSharedEvent{}
+		var event = FileShared{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "file_unshared":
-		var event = FileUnsharedEvent{}
+		var event = FileUnshared{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_archive":
-		var event = GroupArchiveEvent{}
+		var event = GroupArchive{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_close":
-		var event = GroupCloseEvent{}
+		var event = GroupClose{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_history_changed":
-		var event = GroupHistoryChangedEvent{}
+		var event = GroupHistoryChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_joined":
-		var event = GroupJoinedEvent{}
+		var event = GroupJoined{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_left":
-		var event = GroupLeftEvent{}
+		var event = GroupLeft{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_marked":
-		var event = GroupMarkedEvent{}
+		var event = GroupMarked{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_open":
-		var event = GroupOpenEvent{}
+		var event = GroupOpen{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_rename":
-		var event = GroupRenameEvent{}
+		var event = GroupRename{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "group_unarchive":
-		var event = GroupUnarchiveEvent{}
+		var event = GroupUnarchive{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "hello":
-		var event = HelloEvent{}
+		var event = Hello{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "im_close":
-		var event = IMCloseEvent{}
+		var event = IMClose{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "im_created":
-		var event = IMCreatedEvent{}
+		var event = IMCreated{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "im_history_changed":
-		var event = IMHistoryChangedEvent{}
+		var event = IMHistoryChanged{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "im_marked":
-		var event = IMMarkedEvent{}
+		var event = IMMarked{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "im_open":
-		var event = IMOpenEvent{}
+		var event = IMOpen{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "manual_presence_change":
-		var event = ManualPresenceChangeEvent{}
+		var event = ManualPresenceChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "message":
-		var event = MessageEvent{}
+		var event = Message{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "pin_added":
-		var event = PinAddedEvent{}
+		var event = PinAdded{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "pin_removed":
-		var event = PinRemovedEvent{}
+		var event = PinRemoved{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "pref_change":
-		var event = PrefChangeEvent{}
+		var event = PrefChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "presence_change":
-		var event = PresenceChangeEvent{}
+		var event = PresenceChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "star_added":
-		var event = StarAddedEvent{}
+		var event = StarAdded{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "star_removed":
-		var event = StarRemovedEvent{}
+		var event = StarRemoved{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_domain_change":
-		var event = TeamDomainChangeEvent{}
+		var event = TeamDomainChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_join":
-		var event = TeamJoinEvent{}
+		var event = TeamJoin{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_migration_started":
-		var event = TeamMigrationStartedEvent{}
+		var event = TeamMigrationStarted{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_plan_change":
-		var event = TeamPlanChangeEvent{}
+		var event = TeamPlanChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_pref_change":
-		var event = TeamPrefChangeEvent{}
+		var event = TeamPrefChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "team_rename":
-		var event = TeamRenameEvent{}
+		var event = TeamRename{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "user_change":
-		var event = UserChangeEvent{}
+		var event = UserChange{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
 		return event, nil
 	case "user_typing":
-		var event = UserTypingEvent{}
+		var event = UserTyping{}
 		if err := json.Unmarshal(msg, &event); err != nil {
 			return nil, err
 		}
