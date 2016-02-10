@@ -2,15 +2,12 @@ package slack
 
 import (
 	"net/http"
-
 	"github.com/gorilla/websocket"
 	"github.com/stewart/slack/events"
 	"net/url"
 	"io/ioutil"
 	"encoding/json"
 	"errors"
-
-	"fmt"
 )
 
 
@@ -124,7 +121,6 @@ func (client *Client) SendDirectMessage(user_id string, text string) error {
 }
 
 func (client *Client) OpenDM (user_id string) (string, error) {
-	fmt.Print(user_id)
 	route, err := url.Parse(endpoint + "im.open")
 	if err != nil {
 		return "", err
