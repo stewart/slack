@@ -6,9 +6,12 @@ import (
 )
 
 type apiResponse struct {
-	OK    bool   `json:"ok"`
-	URL   string `json:"url"`
-	Error string `json:"error"`
+	OK      bool   `json:"ok"`
+	URL     string `json:"url"`
+	Error   string `json:"error"`
+	Channel struct {
+		ID string `json:"id"`
+	} `json:"channel"`
 }
 
 func call(action, token string, params map[string]string) (*apiResponse, error) {
@@ -35,4 +38,13 @@ func startRtm(token string) (string, error) {
 	}
 
 	return resp.URL, nil
+}
+
+func openIm(token, user string) (string, error) {
+	resp, err := call("im.open", token, map[string]string{"user": user})
+	if err != nil {
+		return "", err
+	}
+
+	return resp.Channel.ID, nil
 }

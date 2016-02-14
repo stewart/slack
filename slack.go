@@ -78,6 +78,12 @@ func (client *Client) Loop() {
 	}()
 }
 
+// Attempts to open an IM with the specified User.
+// If successful, will return a DM ID to use when sending messages to that user.
+func (client *Client) OpenIM(user string) (string, error) {
+	return openIm(client.Token, user)
+}
+
 // Sends a message to the provided channel, with the provided text.
 func (client *Client) SendMessage(channel, text string) error {
 	msg := struct {
