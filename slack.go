@@ -2,10 +2,15 @@ package slack
 
 import (
 	"net/http"
-
 	"github.com/gorilla/websocket"
 	"github.com/stewart/slack/events"
+	"net/url"
+	"io/ioutil"
+	"encoding/json"
+	"errors"
 )
+
+
 
 // A Client maintains a WebSocket connection to the Slack RTM API, spitting out
 // events on the Incoming channel as they come in.
@@ -100,4 +105,67 @@ func (client *Client) SendMessage(channel, text string) error {
 	client.messageID++
 
 	return nil
+}
+
+
+func (client *Client) SendDirectMessage(user_id string, text string) error {
+	dm_id, _ := client.OpenDM(user_id)
+	msg := struct {
+		ID      int    `json:"id"`
+		Type    string `json:"type"`
+		Channel string `json:"channel"`
+		Text    string `json:"text"`
+	}{client.messageID, "message", dm_id, text}
+
+	if err := client.conn.WriteJSON(msg); err != nil {
+		return err
+	}
+
+	client.messageID++
+
+	return nil
+}
+
+func (client *Client) OpenDM (user_id string) (string, error) {
+	route, err := url.Parse(endpoint + "im.open")
+	if err != nil {
+		return "", err
+	}
+
+	params := url.Values{}
+	params.Add("token", client.Token)
+	params.Add("user", user_id)
+	route.RawQuery = params.Encode()
+
+	response, err := http.Get(route.String())
+	if err != nil {
+		return "", err
+	}
+
+	body, err := ioutil.ReadAll(response.Body)
+	defer response.Body.Close()
+	if err != nil {
+		return "", err
+	}
+
+	resp := openDMResponse{}
+	json.Unmarshal(body, &resp)
+
+	if !resp.OK {
+		return "", errors.New("slack error: " + resp.Error)
+	}
+
+	return resp.Channel.ID, nil
+
+}
+
+
+type openDMResponse struct {
+	OK bool `json:"ok"`
+	NoOp bool `json:"no_op"`
+	AlreadyOpen bool `json:"already_open"`
+	Channel struct {
+		   ID string `json:"id"`
+	   } `json:"channel"`
+	Error string `json:"error"`
 }
