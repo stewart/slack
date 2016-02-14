@@ -11,7 +11,7 @@ type apiResponse struct {
 	Error string `json:"error"`
 }
 
-func requestRTM(token string) (string, error) {
+func startRtm(token string) (string, error) {
 	body, err := get("rtm.start", token, map[string]string{})
 	if err != nil {
 		return "", err

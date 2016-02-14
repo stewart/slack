@@ -35,7 +35,7 @@ func NewClient(token string) *Client {
 //
 // Once complete, the Client is considered "connect" to Slack.
 func (client *Client) Connect() error {
-	url, err := requestRTM(client.Token)
+	url, err := startRtm(client.Token)
 	if err != nil {
 		return err
 	}
