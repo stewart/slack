@@ -3,12 +3,7 @@ package slack
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
-	"net/http"
-	"net/url"
 )
-
-const endpoint = "https://slack.com/api/"
 
 type apiResponse struct {
 	OK    bool   `json:"ok"`
@@ -17,22 +12,7 @@ type apiResponse struct {
 }
 
 func requestRTM(token string) (string, error) {
-	route, err := url.Parse(endpoint + "rtm.start")
-	if err != nil {
-		return "", err
-	}
-
-	params := url.Values{}
-	params.Add("token", token)
-	route.RawQuery = params.Encode()
-
-	response, err := http.Get(route.String())
-	if err != nil {
-		return "", err
-	}
-
-	body, err := ioutil.ReadAll(response.Body)
-	defer response.Body.Close()
+	body, err := get("rtm.start", token, map[string]string{})
 	if err != nil {
 		return "", err
 	}
