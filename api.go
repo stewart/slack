@@ -11,17 +11,27 @@ type apiResponse struct {
 	Error string `json:"error"`
 }
 
-func startRtm(token string) (string, error) {
-	body, err := get("rtm.start", token, map[string]string{})
+func call(action, token string, params map[string]string) (*apiResponse, error) {
+	resp := &apiResponse{}
+
+	body, err := get(action, token, params)
 	if err != nil {
-		return "", err
+		return resp, err
 	}
 
-	resp := apiResponse{}
 	json.Unmarshal(body, &resp)
 
 	if !resp.OK {
-		return "", errors.New("slack error: " + resp.Error)
+		return resp, errors.New("slack error: " + resp.Error)
+	}
+
+	return resp, nil
+}
+
+func startRtm(token string) (string, error) {
+	resp, err := call("rtm.start", token, map[string]string{})
+	if err != nil {
+		return "", err
 	}
 
 	return resp.URL, nil
