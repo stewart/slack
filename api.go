@@ -20,6 +20,7 @@ type apiResponse struct {
 	// collections
 	Members  []types.User    `json:"members"`
 	Channels []types.Channel `json:"channels"`
+	IMs      []types.IM      `json:"ims"`
 }
 
 func call(action, token string, params map[string]string) (*apiResponse, error) {
@@ -46,13 +47,4 @@ func startRtm(token string) (string, error) {
 	}
 
 	return resp.URL, nil
-}
-
-func openIm(token, user string) (string, error) {
-	resp, err := call("im.open", token, map[string]string{"user": user})
-	if err != nil {
-		return "", err
-	}
-
-	return resp.Channel.ID, nil
 }

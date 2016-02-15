@@ -123,6 +123,11 @@ func (client *Client) ListChannels() ([]types.Channel, error) {
 	return listChannels(client.Token)
 }
 
+// Gets a list of IMs the user is connected to.
+func (client *Client) ListIms() ([]types.IM, error) {
+	return listIms(client.Token)
+}
+
 func (client *Client) Ping() error {
 	msg := struct {
 		ID   int    `json:"id"`
