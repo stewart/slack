@@ -5,6 +5,7 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/stewart/slack/events"
+	"github.com/stewart/slack/types"
 )
 
 // A Client maintains a WebSocket connection to the Slack RTM API, spitting out
@@ -110,6 +111,11 @@ func (client *Client) SendMessage(channel, text string) error {
 	client.messageID++
 
 	return nil
+}
+
+// Gets a list of team members.
+func (client *Client) ListUsers() ([]types.User, error) {
+	return listUsers(client.Token)
 }
 
 func (client *Client) Ping() error {

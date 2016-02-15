@@ -3,6 +3,8 @@ package slack
 import (
 	"encoding/json"
 	"errors"
+
+	"github.com/stewart/slack/types"
 )
 
 type apiResponse struct {
@@ -12,6 +14,7 @@ type apiResponse struct {
 	Channel struct {
 		ID string `json:"id"`
 	} `json:"channel"`
+	Members []types.User `json:"members"`
 }
 
 func call(action, token string, params map[string]string) (*apiResponse, error) {

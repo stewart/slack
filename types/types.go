@@ -3,7 +3,10 @@ package types
 // Representations of Slack's API Types
 // https://api.slack.com/types
 //
-// Some of these aren't used right now, but might be in the future
+// Some of these aren't used right now, but might be in the future.
+// Additionally, please note that these types might be used in both collection
+// and individual results, so some fields may not be present depending on
+// context.
 
 // A Channel representation
 type Type struct {
@@ -25,7 +28,8 @@ type Channel struct {
 	Created int    `json:"created"`
 	Creator string `json:"creator"`
 
-	Members []string `json:"members"`
+	NumMembers int      `json:"num_members"`
+	Members    []string `json:"members"`
 
 	Topic   Topic `json:"topic"`
 	Purpose Topic `json:"purpose"`
@@ -119,24 +123,35 @@ type IM struct {
 type User struct {
 	Type
 
-	Name    string `json:"name"`
-	Deleted bool   `json:"deleted"`
-	Color   string `json:"color"`
+	TeamID string `json:"team_id"`
+	Name   string `json:"name"`
+	Color  string `json:"color"`
 
 	Profile struct {
 		FirstName string `json:"first_name"`
 		LastName  string `json:"last_name"`
-		RealName  string `json:"real_name"`
-		Email     string `json:"email"`
-		Skype     string `json:"skype"`
-		Phone     string `json:"phone"`
-		Image24   string `json:"image_24"`
-		Image32   string `json:"image_32"`
-		Image48   string `json:"image_48"`
-		Image72   string `json:"image_72"`
-		Image192  string `json:"image_192"`
+		BotID     string `json:"bot_id"`
+
+		RealName           string `json:"real_name"`
+		RealNameNormalized string `json:"real_name_normalized"`
+
+		Title string `json:"title"`
+
+		Skype string `json:"skype"`
+		Phone string `json:"phone"`
+
+		Image24       string `json:"image_24"`
+		Image32       string `json:"image_32"`
+		Image48       string `json:"image_48"`
+		Image72       string `json:"image_72"`
+		Image192      string `json:"image_192"`
+		Image512      string `json:"image_512"`
+		Image1024     string `json:"image_1024"`
+		ImageOriginal string `json:"image_original"`
 	} `json:"profile"`
 
+	Deleted           bool `json:"deleted"`
+	IsBot             bool `json:"is_bot"`
 	IsAdmin           bool `json:"is_admin"`
 	IsOwner           bool `json:"is_owner"`
 	IsPrimaryOwner    bool `json:"is_primary_owner"`
