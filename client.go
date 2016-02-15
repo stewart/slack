@@ -111,3 +111,18 @@ func (client *Client) SendMessage(channel, text string) error {
 
 	return nil
 }
+
+func (client *Client) Ping() error {
+	msg := struct {
+		ID   int    `json:"id"`
+		Type string `json:"type"`
+	}{client.messageID, "ping"}
+
+	if err := client.conn.WriteJSON(msg); err != nil {
+		return err
+	}
+
+	client.messageID++
+
+	return nil
+}
