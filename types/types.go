@@ -8,11 +8,6 @@ package types
 // and individual results, so some fields may not be present depending on
 // context.
 
-// A Channel representation
-type Type struct {
-	ID string `json:"id"`
-}
-
 type Topic struct {
 	Value   string `json:"value"`
 	Creator string `json:"creator"`
@@ -22,7 +17,7 @@ type Topic struct {
 // Channel
 // https://api.slack.com/types/channel
 type Channel struct {
-	Type
+	ID string `json:"id"`
 
 	Name    string `json:"name"`
 	Created int    `json:"created"`
@@ -43,9 +38,9 @@ type Channel struct {
 // File
 // https://api.slack.com/types/channel
 type File struct {
-	Type
-	Created   int `json:"created"`
-	Timestamp int `json:"timestamp"`
+	ID        string `json:"id"`
+	Created   int    `json:"created"`
+	Timestamp int    `json:"timestamp"`
 
 	Name       string `json:"name"`
 	Title      string `json:"title"`
@@ -91,7 +86,7 @@ type File struct {
 // Group
 // https://api.slack.com/types/group
 type Group struct {
-	Type
+	ID string `json:"id"`
 
 	Name    string `json:"name"`
 	Created int    `json:"created"`
@@ -109,7 +104,7 @@ type Group struct {
 // IM
 // https://api.slack.com/types/im
 type IM struct {
-	Type
+	ID string `json:"id"`
 
 	User    string `json:"user"`
 	Created int    `json:"created"`
@@ -121,7 +116,7 @@ type IM struct {
 // User
 // https://api.slack.com/types/user
 type User struct {
-	Type
+	ID string `json:"id"`
 
 	TeamID string `json:"team_id"`
 	Name   string `json:"name"`
