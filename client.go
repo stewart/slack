@@ -21,13 +21,18 @@ type Client struct {
 }
 
 // Creates a new Client instance with the provided authentication token.
-func NewClient(token string) *Client {
+func New(token string) *Client {
 	return &Client{
 		Token:     token,
 		Incoming:  make(chan interface{}),
 		Errors:    make(chan error, 1),
 		messageID: 1,
 	}
+}
+
+// alias for New
+func NewClient(token string) *Client {
+	return New(token)
 }
 
 // Connects to Slack's RTM WebSocket API by requesting a connection URL via the
@@ -56,7 +61,7 @@ func (client *Client) Connect() error {
 // Wrapper around a goroutine that listens for incoming messages, parsing them
 // into their correct event type, then tosses them (as an `interface{}`) into
 // the client.Incoming channel.
-func (client *Client) Loop() {
+func (client *Client) Listen() {
 	conn := client.conn
 
 	go func() {
@@ -76,6 +81,11 @@ func (client *Client) Loop() {
 			client.Incoming <- message
 		}
 	}()
+}
+
+// alias for Listen
+func (client *Client) Loop() {
+	client.Listen()
 }
 
 // Attempts to open an IM with the specified User.
