@@ -118,6 +118,11 @@ func (client *Client) ListUsers() ([]types.User, error) {
 	return listUsers(client.Token)
 }
 
+// Gets a list of team channels.
+func (client *Client) ListChannels() ([]types.Channel, error) {
+	return listChannels(client.Token)
+}
+
 func (client *Client) Ping() error {
 	msg := struct {
 		ID   int    `json:"id"`

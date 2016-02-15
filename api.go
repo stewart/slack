@@ -8,13 +8,18 @@ import (
 )
 
 type apiResponse struct {
-	OK      bool   `json:"ok"`
-	URL     string `json:"url"`
-	Error   string `json:"error"`
+	OK    bool   `json:"ok"`
+	URL   string `json:"url"`
+	Error string `json:"error"`
+
+	// im.open response
 	Channel struct {
 		ID string `json:"id"`
 	} `json:"channel"`
-	Members []types.User `json:"members"`
+
+	// collections
+	Members  []types.User    `json:"members"`
+	Channels []types.Channel `json:"channels"`
 }
 
 func call(action, token string, params map[string]string) (*apiResponse, error) {
