@@ -59,7 +59,7 @@ type ChannelCreated struct {
 	Channel struct {
 		ID      string `json:"id"`
 		Name    string `json:"name"`
-		Created string `json:"created"`
+		Created int    `json:"created"`
 		Creator string `json:"creator"`
 	} `json:"channel"`
 }
