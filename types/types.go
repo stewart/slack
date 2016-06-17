@@ -36,7 +36,7 @@ type Channel struct {
 }
 
 // File
-// https://api.slack.com/types/channel
+// https://api.slack.com/types/file
 type File struct {
 	ID        string `json:"id"`
 	Created   int    `json:"created"`
